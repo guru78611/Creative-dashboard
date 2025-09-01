@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FMS Sheets Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .sheet-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sheet-card {
+      background-color: #ffffff;
+      color: #1f4037;
+      border-radius: 10px;
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    .sheet-card:hover {
+      transform: scale(1.05);
+      background-color: #e0e0e0;
+    }
+
+    .sheet-card img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .sheet-title {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 900px) {
+      .sheet-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .sheet-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    const fmsSheets = [
+      { name: "ALL FMS Sheet", url: "https://docs.google.com/spreadsheets/d/1s9TQ0J3pcFao6Dg0anW3X20iIzi7E-bYjsOd5y8iUIk/edit?usp=sharing" },
+      { name: "FMS Sheet 2", url: "https://docs.google.com/spreadsheets/d/2def456" },
+      { name: "FMS Sheet 3", url: "https://docs.google.com/spreadsheets/d/3ghi789" },
+      { name: "FMS Sheet 4", url: "https://docs.google.com/spreadsheets/d/4jkl012" },
+      { name: "FMS Sheet 5", url: "https://docs.google.com/spreadsheets/d/5mno345" },
+      { name: "FMS Sheet 6", url: "https://docs.google.com/spreadsheets/d/6pqr678" },
+      { name: "FMS Sheet 7", url: "https://docs.google.com/spreadsheets/d/7stu901" },
+      { name: "FMS Sheet 8", url: "https://docs.google.com/spreadsheets/d/8vwx234" },
+      { name: "FMS Sheet 9", url: "https://docs.google.com/spreadsheets/d/9yz1234" },
+      { name: "FMS Sheet 10", url: "https://docs.google.com/spreadsheets/d/10abc567" },
+    ];
+
+    function loadSheets() {
+      const container = document.getElementById("sheetContainer");
+      fmsSheets.forEach(sheet => {
+        const card = document.createElement("div");
+        card.className = "sheet-card";
+        card.onclick = () => window.open(sheet.url, "_blank");
+
+        const icon = document.createElement("img");
+        icon.src = "https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png";
+        icon.alt = "Google Sheets Icon";
+
+        const title = document.createElement("div");
+        title.className = "sheet-title";
+        title.innerText = sheet.name;
+
+        card.appendChild(icon);
+        card.appendChild(title);
+        container.appendChild(card);
+      });
+    }
+
+    window.onload = loadSheets;
+  </script>
+</head>
+<body>
+
+  <h1>FMS Sheets Dashboard</h1>
+
+  <div class="sheet-list" id="sheetContainer">
+    <!-- Sheet cards will be inserted here -->
+  </div>
+
+</body>
+</html>

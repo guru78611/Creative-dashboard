@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Looker Studio Dashboards</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .dashboard-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dashboard-card {
+      background-color: #ffffff;
+      color: #1f4037;
+      border-radius: 10px;
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, background-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dashboard-card:hover {
+      transform: scale(1.05);
+      background-color: #e0e0e0;
+    }
+
+    .dashboard-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 15px;
+      fill: #1f4037;
+    }
+
+    .dashboard-title {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 900px) {
+      .dashboard-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .dashboard-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    const lookerDashboards = [
+      { name: "PMS Dashboard 1", url: "https://lookerstudio.google.com/reporting/accade81-b387-4d18-b9d0-428a214c1113" },
+      { name: "Looker Dashboard 2", url: "https://lookerstudio.google.com/reporting/2" },
+      { name: "Looker Dashboard 3", url: "https://lookerstudio.google.com/reporting/3" },
+      { name: "Looker Dashboard 4", url: "https://lookerstudio.google.com/reporting/4" },
+      { name: "Looker Dashboard 5", url: "https://lookerstudio.google.com/reporting/5" },
+      { name: "Looker Dashboard 6", url: "https://lookerstudio.google.com/reporting/6" },
+      { name: "Looker Dashboard 7", url: "https://lookerstudio.google.com/reporting/7" },
+      { name: "Looker Dashboard 8", url: "https://lookerstudio.google.com/reporting/8" },
+      { name: "Looker Dashboard 9", url: "https://lookerstudio.google.com/reporting/9" },
+      { name: "Looker Dashboard 10", url: "https://lookerstudio.google.com/reporting/10" },
+    ];
+
+    function createDashboardIcon() {
+      const ns = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(ns, "svg");
+      svg.setAttribute("class", "dashboard-icon");
+      svg.setAttribute("viewBox", "0 0 64 64");
+      svg.setAttribute("aria-hidden", "true");
+
+      // Outer circle
+      const circle = document.createElementNS(ns, "circle");
+      circle.setAttribute("cx", "32");
+      circle.setAttribute("cy", "32");
+      circle.setAttribute("r", "30");
+      circle.setAttribute("stroke", "#1f4037");
+      circle.setAttribute("stroke-width", "4");
+      circle.setAttribute("fill", "none");
+      svg.appendChild(circle);
+
+      // Large inner ring
+      const ring = document.createElementNS(ns, "circle");
+      ring.setAttribute("cx", "32");
+      ring.setAttribute("cy", "32");
+      ring.setAttribute("r", "18");
+      ring.setAttribute("stroke", "#1f4037");
+      ring.setAttribute("stroke-width", "4");
+      ring.setAttribute("fill", "none");
+      svg.appendChild(ring);
+
+      // Connecting line from inner ring to small circle
+      const line = document.createElementNS(ns, "line");
+      line.setAttribute("x1", "32");
+      line.setAttribute("y1", "14");
+      line.setAttribute("x2", "42");
+      line.setAttribute("y2", "6");
+      line.setAttribute("stroke", "#1f4037");
+      line.setAttribute("stroke-width", "4");
+      line.setAttribute("stroke-linecap", "round");
+      svg.appendChild(line);
+
+      // Small circle on top right
+      const smallCircle = document.createElementNS(ns, "circle");
+      smallCircle.setAttribute("cx", "46");
+      smallCircle.setAttribute("cy", "6");
+      smallCircle.setAttribute("r", "6");
+      smallCircle.setAttribute("fill", "#1f4037");
+      svg.appendChild(smallCircle);
+
+      return svg;
+    }
+
+    function loadDashboards() {
+      const container = document.getElementById("dashboardContainer");
+      lookerDashboards.forEach(dashboard => {
+        const card = document.createElement("div");
+        card.className = "dashboard-card";
+        card.onclick = () => window.open(dashboard.url, "_blank");
+
+        // Create and append icon SVG
+        const icon = createDashboardIcon();
+        card.appendChild(icon);
+
+        const title = document.createElement("div");
+        title.className = "dashboard-title";
+        title.innerText = dashboard.name;
+
+        card.appendChild(title);
+        container.appendChild(card);
+      });
+    }
+
+    window.onload = loadDashboards;
+  </script>
+</head>
+<body>
+
+  <h1>Looker Studio Dashboards</h1>
+
+  <div class="dashboard-list" id="dashboardContainer">
+    <!-- Dashboard cards will be inserted here -->
+  </div>
+
+</body>
+</html>

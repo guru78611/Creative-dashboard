@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Google Forms Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .form-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .btn {
+      background-color: #ffffff;
+      color: #1f4037;
+      padding: 15px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background-color 0.3s;
+      min-width: 220px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background-color: #e0e0e0;
+    }
+  </style>
+
+  <script>
+    // Replace with your actual Google Form URLs
+    const googleForms = [
+      { name: "Form 1 - Daily Update", url: "https://forms.gle/example1" },
+      { name: "Form 2 - Feedback", url: "https://forms.gle/example2" },
+      { name: "Form 3 - Incident Report", url: "https://forms.gle/example3" },
+      { name: "Form 4 - Leave Request", url: "https://forms.gle/example4" },
+      { name: "Form 5 - Sales Entry", url: "https://forms.gle/example5" },
+      { name: "Form 6 - Training Feedback", url: "https://forms.gle/example6" },
+      { name: "Form 7 - Customer Visit", url: "https://forms.gle/example7" },
+      { name: "Form 8 - Asset Handover", url: "https://forms.gle/example8" },
+      { name: "Form 9 - Market Research", url: "https://forms.gle/example9" },
+      { name: "Form 10 - Monthly Report", url: "https://forms.gle/example10" },
+    ];
+
+    function openForm(url) {
+      window.open(url, "_blank");
+    }
+
+    function loadForms() {
+      const container = document.getElementById("formContainer");
+      googleForms.forEach(form => {
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.innerText = form.name;
+        btn.onclick = () => openForm(form.url);
+        container.appendChild(btn);
+      });
+    }
+
+    window.onload = loadForms;
+  </script>
+</head>
+<body>
+
+  <h1>Google Forms Dashboard</h1>
+
+  <div class="form-list" id="formContainer">
+    <!-- Form buttons will be added here dynamically -->
+  </div>
+
+</body>
+</html>
