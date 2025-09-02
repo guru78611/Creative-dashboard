@@ -77,17 +77,19 @@
 
   <script>
     const lookerDashboards = [
-      { name: "PMS Dashboard 1", url: "https://lookerstudio.google.com/reporting/accade81-b387-4d18-b9d0-428a214c1113" },
-      { name: "Looker Dashboard 2", url: "https://lookerstudio.google.com/reporting/2" },
-      { name: "Looker Dashboard 3", url: "https://lookerstudio.google.com/reporting/3" },
-      { name: "Looker Dashboard 4", url: "https://lookerstudio.google.com/reporting/4" },
-      { name: "Looker Dashboard 5", url: "https://lookerstudio.google.com/reporting/5" },
-      { name: "Looker Dashboard 6", url: "https://lookerstudio.google.com/reporting/6" },
-      { name: "Looker Dashboard 7", url: "https://lookerstudio.google.com/reporting/7" },
-      { name: "Looker Dashboard 8", url: "https://lookerstudio.google.com/reporting/8" },
-      { name: "Looker Dashboard 9", url: "https://lookerstudio.google.com/reporting/9" },
-      { name: "Looker Dashboard 10", url: "https://lookerstudio.google.com/reporting/10" },
+      { name: "PMS Dashboard 1", url: "https://lookerstudio.google.com/reporting/accade81-b387-4d18-b9d0-428a214c1113", passwordProtected: true },
+      { name: "Looker Dashboard 2", url: "https://lookerstudio.google.com/reporting/2", passwordProtected: true },
+      { name: "Looker Dashboard 3", url: "https://lookerstudio.google.com/reporting/3", passwordProtected: true },
+      { name: "Looker Dashboard 4", url: "https://lookerstudio.google.com/reporting/4", passwordProtected: true },
+      { name: "Looker Dashboard 5", url: "https://lookerstudio.google.com/reporting/5", passwordProtected: false },
+      { name: "Looker Dashboard 6", url: "https://lookerstudio.google.com/reporting/6", passwordProtected: false },
+      { name: "Looker Dashboard 7", url: "https://lookerstudio.google.com/reporting/7", passwordProtected: false },
+      { name: "Looker Dashboard 8", url: "https://lookerstudio.google.com/reporting/8", passwordProtected: false },
+      { name: "Looker Dashboard 9", url: "https://lookerstudio.google.com/reporting/9", passwordProtected: false },
+      { name: "Looker Dashboard 10", url: "https://lookerstudio.google.com/reporting/10"},
     ];
+
+    const PASSWORD = "123";
 
     function createDashboardIcon() {
       const ns = "http://www.w3.org/2000/svg";
@@ -96,7 +98,6 @@
       svg.setAttribute("viewBox", "0 0 64 64");
       svg.setAttribute("aria-hidden", "true");
 
-      // Outer circle
       const circle = document.createElementNS(ns, "circle");
       circle.setAttribute("cx", "32");
       circle.setAttribute("cy", "32");
@@ -106,7 +107,6 @@
       circle.setAttribute("fill", "none");
       svg.appendChild(circle);
 
-      // Large inner ring
       const ring = document.createElementNS(ns, "circle");
       ring.setAttribute("cx", "32");
       ring.setAttribute("cy", "32");
@@ -116,7 +116,6 @@
       ring.setAttribute("fill", "none");
       svg.appendChild(ring);
 
-      // Connecting line from inner ring to small circle
       const line = document.createElementNS(ns, "line");
       line.setAttribute("x1", "32");
       line.setAttribute("y1", "14");
@@ -127,7 +126,6 @@
       line.setAttribute("stroke-linecap", "round");
       svg.appendChild(line);
 
-      // Small circle on top right
       const smallCircle = document.createElementNS(ns, "circle");
       smallCircle.setAttribute("cx", "46");
       smallCircle.setAttribute("cy", "6");
@@ -143,9 +141,21 @@
       lookerDashboards.forEach(dashboard => {
         const card = document.createElement("div");
         card.className = "dashboard-card";
-        card.onclick = () => window.open(dashboard.url, "_blank");
 
-        // Create and append icon SVG
+        // On click: handle password protection
+        card.onclick = () => {
+          if (dashboard.passwordProtected) {
+            const userInput = prompt("Enter password to access this dashboard:");
+            if (userInput === PASSWORD) {
+              window.open(dashboard.url, "_blank");
+            } else if (userInput !== null) {
+              alert("Incorrect password. Access denied.");
+            }
+          } else {
+            window.open(dashboard.url, "_blank");
+          }
+        };
+
         const icon = createDashboardIcon();
         card.appendChild(icon);
 
