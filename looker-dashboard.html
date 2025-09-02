@@ -77,17 +77,24 @@
 
   <script>
     const lookerDashboards = [
-      { name: "Looker Dashboard 1", url: "https://lookerstudio.google.com/reporting/1", password: "1" },
-      { name: "Looker Dashboard 2", url: "https://lookerstudio.google.com/reporting/2", password: "2" },
-      { name: "Looker Dashboard 3", url: "https://lookerstudio.google.com/reporting/3", password: "3" },
-      { name: "Looker Dashboard 4", url: "https://lookerstudio.google.com/reporting/4" },
-      { name: "Looker Dashboard 5", url: "https://lookerstudio.google.com/reporting/5" },
-      { name: "Looker Dashboard 6", url: "https://lookerstudio.google.com/reporting/6" },
-      { name: "Looker Dashboard 7", url: "https://lookerstudio.google.com/reporting/7" },
-      { name: "Looker Dashboard 8", url: "https://lookerstudio.google.com/reporting/8" },
-      { name: "Looker Dashboard 9", url: "https://lookerstudio.google.com/reporting/9" },
-      { name: "Looker Dashboard 10", url: "https://lookerstudio.google.com/reporting/10" },
+      { name: "PMS Dashboard 1", url: "https://lookerstudio.google.com/reporting/accade81-b387-4d18-b9d0-428a214c1113", passwordProtected: true },
+      { name: "Looker Dashboard 2", url: "https://lookerstudio.google.com/reporting/2", passwordProtected: true },
+      { name: "Looker Dashboard 3", url: "https://lookerstudio.google.com/reporting/3", passwordProtected: true },
+      { name: "Looker Dashboard 4", url: "https://lookerstudio.google.com/reporting/4", passwordProtected: true },
+      { name: "Looker Dashboard 5", url: "https://lookerstudio.google.com/reporting/5", passwordProtected: false },
+      { name: "Looker Dashboard 6", url: "https://lookerstudio.google.com/reporting/6", passwordProtected: false },
+      { name: "Looker Dashboard 7", url: "https://lookerstudio.google.com/reporting/7", passwordProtected: false },
+      { name: "Looker Dashboard 8", url: "https://lookerstudio.google.com/reporting/8", passwordProtected: false },
+      { name: "Looker Dashboard 9", url: "https://lookerstudio.google.com/reporting/9", passwordProtected: false },
+      { name: "Looker Dashboard 10", url: "https://lookerstudio.google.com/reporting/10", passwordProtected: false },
     ];
+
+    const dashboardPasswords = {
+      "PMS Dashboard 1": "1",
+      "Looker Dashboard 2": "2",
+      "Looker Dashboard 3": "3",
+      "Looker Dashboard 4": "4"
+    };
 
     function createDashboardIcon() {
       const ns = "http://www.w3.org/2000/svg";
@@ -142,9 +149,10 @@
         card.className = "dashboard-card";
 
         card.onclick = () => {
-          if (dashboard.password !== undefined) {
-            const userInput = prompt(`Enter password for "${dashboard.name}":`);
-            if (userInput === dashboard.password) {
+          if (dashboard.passwordProtected) {
+            const expectedPassword = dashboardPasswords[dashboard.name];
+            const userInput = prompt("Enter password to access this dashboard:");
+            if (userInput === expectedPassword) {
               window.open(dashboard.url, "_blank");
             } else if (userInput !== null) {
               alert("Incorrect password. Access denied.");
