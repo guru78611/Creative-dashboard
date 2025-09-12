@@ -9,14 +9,43 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* LEFT SIDE SLIDESHOW */
+    .slideshow {
+      width: 40%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    /* RIGHT SIDE DASHBOARD */
+    .dashboard-container {
+      width: 60%;
       background: linear-gradient(135deg, #ffe259, #ffa751);
       background-size: 400% 400%;
       animation: bgAnimation 15s ease infinite;
       color: #333;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 20px;
+      overflow-y: auto;
     }
 
     @keyframes bgAnimation {
@@ -26,26 +55,28 @@
     }
 
     h1 {
-      font-size: 3em;
-      margin: 40px 0 20px;
+      font-size: 2.6em;
+      margin: 30px 0 15px;
       font-weight: 700;
       color: #222;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+      text-align: left;
+      width: 90%;
     }
 
     .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      width: 85%;
-      max-width: 1100px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 90%;
+      max-width: 1000px;
+      margin-top: 15px;
     }
 
     .card {
       background: #fff;
-      border-radius: 16px;
-      padding: 25px 20px;
+      border-radius: 14px;
+      padding: 20px 18px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       text-decoration: none;
       color: #333;
@@ -55,32 +86,32 @@
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       box-shadow: 0 12px 20px rgba(0,0,0,0.25);
     }
 
     .card .icon {
-      font-size: 2em;
-      margin-bottom: 12px;
+      font-size: 1.8em;
+      margin-bottom: 10px;
     }
 
     .card h2 {
-      font-size: 1.3em;
-      margin: 0 0 8px;
+      font-size: 1.2em;
+      margin: 0 0 6px;
       font-weight: 600;
       color: #222;
     }
 
     .card p {
-      font-size: 0.95em;
+      font-size: 0.9em;
       margin: 0;
       color: #666;
       line-height: 1.4;
     }
 
     footer {
-      margin: 40px 0 20px;
-      font-size: 0.9em;
+      margin: 30px 0 15px;
+      font-size: 0.85em;
       color: rgba(0,0,0,0.6);
     }
 
@@ -92,14 +123,14 @@
       background: linear-gradient(135deg, #667eea, #764ba2);
       color: #fff;
       border-radius: 50px;
-      padding: 14px 24px;
+      padding: 12px 22px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.95em;
+      font-size: 0.9em;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
       animation: pulse 3s infinite;
-      z-index: 10;
+      z-index: 1000;
     }
 
     .chat-btn:hover {
@@ -112,101 +143,82 @@
       50% { transform: scale(1.07); }
       100% { transform: scale(1); }
     }
-
-    /* Right Top Slideshow */
-    .slideshow-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 250px;
-      height: 150px;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      z-index: 5;
-    }
-
-    .slideshow-container img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .slideshow-container img.active {
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
 
-  <h1>Creative NewTech Dashboard</h1>
-
-  <div class="dashboard">
-
-    <a href="https://midemotwo.midap.in/creativent/login_form.php" class="card">
-      <div class="icon">🧷</div>
-      <h2>MI DIGITAL AUTOPILOT</h2>
-      <p>Automate workflows and manage digital processes efficiently.</p>
-    </a>
-
-    <a href="looker-dashboard.html" class="card">
-      <div class="icon">📊</div>
-      <h2>Looker Dashboards</h2>
-      <p>Access interactive dashboards and detailed analytics reports.</p>
-    </a>
-
-    <a href="google-form-dashboard.html" class="card">
-      <div class="icon">📝</div>
-      <h2>Google Forms</h2>
-      <p>Track form submissions and manage response data seamlessly.</p>
-    </a>
-
-    <a href="fms-dashboard.html" class="card">
-      <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" style="width:40px;height:40px;"/>
-      <h2>FMS Sheets</h2>
-      <p>Manage financial and operational data using integrated sheets.</p>
-    </a>
-
-    <a href="https://midemotwo.midap.in/creativent/fms_form.php?act=YTozOntzOjI6ImlkIjtpOjEyO3M6Mzoia2V5IjtzOjMyOiJmZTdiMDMwNzMwMGVjODU5Njg0MWM1MGYyOGUzM2E1NyI7czoxNDoiZW5fbGljZW5zZV9rZXkiO3M6MzI6IjUzYjQ5MjIzYTFiYjg0OTAzMjY3ZjNhMWM3YWY0NGMyIjt9" class="card">
-      <div class="icon">🧷</div>
-      <h2>Claim Form</h2>
-      <p>Submit and track claims quickly with a streamlined workflow.</p>
-    </a>
-
+  <!-- LEFT SLIDESHOW -->
+  <div class="slideshow">
+    <img src="https://picsum.photos/id/1015/800/1200" class="active" alt="Slide 1">
+    <img src="https://picsum.photos/id/1016/800/1200" alt="Slide 2">
+    <img src="https://picsum.photos/id/1018/800/1200" alt="Slide 3">
+    <img src="https://picsum.photos/id/1020/800/1200" alt="Slide 4">
+    <img src="https://picsum.photos/id/1024/800/1200" alt="Slide 5">
+    <img src="https://picsum.photos/id/1025/800/1200" alt="Slide 6">
+    <img src="https://picsum.photos/id/1035/800/1200" alt="Slide 7">
+    <img src="https://picsum.photos/id/1041/800/1200" alt="Slide 8">
+    <img src="https://picsum.photos/id/1043/800/1200" alt="Slide 9">
+    <img src="https://picsum.photos/id/1050/800/1200" alt="Slide 10">
   </div>
 
-  <!-- Right Top Slideshow -->
-  <div class="slideshow-container">
-    <img src="https://via.placeholder.com/250x150?text=Image+1" alt="Slide 1" class="slide active">
-    <img src="https://via.placeholder.com/250x150?text=Image+2" alt="Slide 2" class="slide">
-    <img src="https://via.placeholder.com/250x150?text=Image+3" alt="Slide 3" class="slide">
-    <!-- Baaki 7 images bhi add kar sakte ho -->
+  <!-- RIGHT DASHBOARD -->
+  <div class="dashboard-container">
+    <h1>Creative NewTech Dashboard</h1>
+
+    <div class="dashboard">
+      <a href="https://midemotwo.midap.in/creativent/login_form.php" class="card">
+        <div class="icon">🧷</div>
+        <h2>MI DIGITAL AUTOPILOT</h2>
+        <p>Automate workflows and manage digital processes efficiently.</p>
+      </a>
+
+      <a href="looker-dashboard.html" class="card">
+        <div class="icon">📊</div>
+        <h2>Looker Dashboards</h2>
+        <p>Access interactive dashboards and detailed analytics reports.</p>
+      </a>
+
+      <a href="google-form-dashboard.html" class="card">
+        <div class="icon">📝</div>
+        <h2>Google Forms</h2>
+        <p>Track form submissions and manage response data seamlessly.</p>
+      </a>
+
+      <a href="fms-dashboard.html" class="card">
+        <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" style="width:35px;height:35px;"/>
+        <h2>FMS Sheets</h2>
+        <p>Manage financial and operational data using integrated sheets.</p>
+      </a>
+
+      <a href="https://midemotwo.midap.in/creativent/fms_form.php?act=YTozOntzOjI6ImlkIjtpOjEyO3M6Mzoia2V5IjtzOjMyOiJmZTdiMDMwNzMwMGVjODU5Njg0MWM1MGYyOGUzM2E1NyI7czoxNDoiZW5fbGljZW5zZV9rZXkiO3M6MzI6IjUzYjQ5MjIzYTFiYjg0OTAzMjY3ZjNhMWM3YWY0NGMyIjt9" class="card">
+        <div class="icon">🧷</div>
+        <h2>Claim Form</h2>
+        <p>Submit and track claims quickly with a streamlined workflow.</p>
+      </a>
+    </div>
+
+    <footer>
+      © 2025 Creative NewTech
+    </footer>
   </div>
 
   <!-- Floating Chat Button -->
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScKE0Flft9nirS6LljOvON5Bc60llCTgs607I0IvkxSvnswVw/viewform?usp=sharing&ouid=106541071227620913343" 
-     target="_blank" 
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScKE0Flft9nirS6LljOvON5Bc60llCTgs607I0IvkxSvnswVw/viewform?usp=sharing&ouid=106541071227620913343"
+     target="_blank"
      class="chat-btn">
     💬 I Need Form
   </a>
 
-  <footer>
-    © 2025 Creative NewTech
-  </footer>
-
   <script>
-    let slides = document.querySelectorAll('.slideshow-container img');
+    // Slideshow Logic
+    const slides = document.querySelectorAll('.slideshow img');
     let current = 0;
 
     setInterval(() => {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
-    }, 10000); // 10 sec change
+    }, 10000); // 10 sec
   </script>
-
 </body>
 </html>
