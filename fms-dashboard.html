@@ -93,7 +93,7 @@
       fmsSheets.forEach(sheet => {
         const card = document.createElement("div");
         card.className = "sheet-card";
-        card.onclick = () => window.open(sheet.url, "_blank");
+        card.onclick = () => window.location.href = sheet.url; // ✅ Same tab
 
         const icon = document.createElement("img");
         icon.src = "https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png";
@@ -122,6 +122,3 @@
 
 </body>
 </html>
-
-
-
