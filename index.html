@@ -10,11 +10,19 @@
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #ffe259, #ffa751);
+      background-size: 400% 400%;
+      animation: bgAnimation 15s ease infinite;
       color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
@@ -81,20 +89,27 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #ff9800;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: #fff;
       border-radius: 50px;
-      padding: 14px 22px;
+      padding: 14px 24px;
       text-decoration: none;
       font-weight: bold;
       font-size: 0.95em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
+      animation: pulse 3s infinite;
     }
 
     .chat-btn:hover {
-      background: #e68900;
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
