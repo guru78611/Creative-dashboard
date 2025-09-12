@@ -11,7 +11,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       min-height: 100vh;
-      overflow: hidden;
+      flex-direction: row;
     }
 
     /* LEFT SIDE SLIDESHOW */
@@ -45,7 +45,7 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      overflow-y: auto;
+      overflow-y: auto; /* enable scroll on dashboard side */
     }
 
     @keyframes bgAnimation {
@@ -154,6 +154,7 @@
         width: 100%;
         height: auto;
         order: 1; /* dashboard first */
+        overflow-y: visible; /* allow scrolling whole page */
       }
 
       .slideshow {
