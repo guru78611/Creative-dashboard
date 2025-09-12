@@ -63,18 +63,19 @@
     }
 
     h1 {
-      font-size: 3em;
-      margin: 40px 0 20px;
+      font-size: 2.8em; /* thoda chhota kiya */
+      margin: 80px 0 20px; /* top margin bada diya header neeche ke liye */
       font-weight: 700;
       color: #222;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
       z-index: 1;
+      text-align: center;
     }
 
     .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* thoda chhota cards width */
+      gap: 25px;
       width: 85%;
       max-width: 1100px;
       margin-top: 20px;
@@ -84,7 +85,7 @@
     .card {
       background: #fff;
       border-radius: 16px;
-      padding: 25px 20px;
+      padding: 20px 18px; /* thoda chhota padding */
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       text-decoration: none;
       color: #333;
@@ -101,19 +102,19 @@
     }
 
     .card .icon {
-      font-size: 2em;
-      margin-bottom: 12px;
+      font-size: 1.8em; /* thoda chhota */
+      margin-bottom: 10px;
     }
 
     .card h2 {
-      font-size: 1.3em;
-      margin: 0 0 8px;
+      font-size: 1.2em; /* thoda chhota */
+      margin: 0 0 6px;
       font-weight: 600;
       color: #222;
     }
 
     .card p {
-      font-size: 0.95em;
+      font-size: 0.9em; /* thoda chhota */
       margin: 0;
       color: #666;
       line-height: 1.4;
@@ -121,7 +122,7 @@
 
     footer {
       margin: 40px 0 20px;
-      font-size: 0.9em;
+      font-size: 0.85em;
       color: rgba(0,0,0,0.6);
       z-index: 1;
     }
@@ -154,6 +155,7 @@
       50% { transform: scale(1.07); }
       100% { transform: scale(1); }
     }
+
   </style>
 </head>
 <body>
