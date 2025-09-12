@@ -97,7 +97,7 @@
       googleForms.forEach(form => {
         const card = document.createElement("div");
         card.className = "form-card";
-        card.onclick = () => window.open(form.url, "_blank");
+        card.onclick = () => window.open(form.url, "_self"); // ✅ same tab
 
         const icon = document.createElement("img");
         icon.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRpUFJLvWoweterzOhfWgZhCDjrAVpfBvhg&s";
@@ -126,7 +126,3 @@
 
 </body>
 </html>
-
-
-
-
