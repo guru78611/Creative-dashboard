@@ -29,32 +29,9 @@
       z-index: 0;
     }
 
-    .shape1 {
-      width: 300px;
-      height: 300px;
-      background: #ff6a00;
-      top: -80px;
-      left: -80px;
-      animation-delay: 0s;
-    }
-
-    .shape2 {
-      width: 400px;
-      height: 400px;
-      background: #8e2de2;
-      bottom: -120px;
-      right: -100px;
-      animation-delay: 5s;
-    }
-
-    .shape3 {
-      width: 250px;
-      height: 250px;
-      background: #00c9ff;
-      top: 40%;
-      left: 20%;
-      animation-delay: 10s;
-    }
+    .shape1 { width: 300px; height: 300px; background: #ff6a00; top: -80px; left: -80px; animation-delay: 0s; }
+    .shape2 { width: 400px; height: 400px; background: #8e2de2; bottom: -120px; right: -100px; animation-delay: 5s; }
+    .shape3 { width: 250px; height: 250px; background: #00c9ff; top: 40%; left: 20%; animation-delay: 10s; }
 
     @keyframes float {
       0% { transform: translateY(0) translateX(0) scale(1); }
@@ -63,8 +40,8 @@
     }
 
     h1 {
-      font-size: 2.8em; /* thoda chhota kiya */
-      margin: 80px 0 20px; /* top margin bada diya header neeche ke liye */
+      font-size: 3em;
+      margin: 120px 0 30px; /* header shifted more down */
       font-weight: 700;
       color: #222;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
@@ -74,18 +51,18 @@
 
     .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* thoda chhota cards width */
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
       width: 85%;
       max-width: 1100px;
-      margin-top: 20px;
+      margin-top: 40px; /* dashboard slightly lower */
       z-index: 1;
     }
 
     .card {
       background: #fff;
       border-radius: 16px;
-      padding: 20px 18px; /* thoda chhota padding */
+      padding: 25px 20px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       text-decoration: none;
       color: #333;
@@ -101,33 +78,12 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.25);
     }
 
-    .card .icon {
-      font-size: 1.8em; /* thoda chhota */
-      margin-bottom: 10px;
-    }
+    .card .icon { font-size: 2em; margin-bottom: 12px; }
+    .card h2 { font-size: 1.3em; margin: 0 0 8px; font-weight: 600; color: #222; }
+    .card p { font-size: 0.95em; margin: 0; color: #666; line-height: 1.4; }
 
-    .card h2 {
-      font-size: 1.2em; /* thoda chhota */
-      margin: 0 0 6px;
-      font-weight: 600;
-      color: #222;
-    }
+    footer { margin: 40px 0 20px; font-size: 0.9em; color: rgba(0,0,0,0.6); z-index: 1; }
 
-    .card p {
-      font-size: 0.9em; /* thoda chhota */
-      margin: 0;
-      color: #666;
-      line-height: 1.4;
-    }
-
-    footer {
-      margin: 40px 0 20px;
-      font-size: 0.85em;
-      color: rgba(0,0,0,0.6);
-      z-index: 1;
-    }
-
-    /* Floating "I Need Form" Button */
     .chat-btn {
       position: fixed;
       bottom: 20px;
