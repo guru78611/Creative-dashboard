@@ -20,8 +20,8 @@
     }
 
     @keyframes bgAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
@@ -84,12 +84,13 @@
       color: rgba(0,0,0,0.6);
     }
 
-    /* Floating Chat Section */
+    /* Chatbot + Floating Button Styles */
     .chat-container {
       position: fixed;
       bottom: 80px;
       right: 20px;
       text-align: center;
+      pointer-events: none;  /* robot is decorative */
     }
 
     .robot {
@@ -125,12 +126,11 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Floating Button */
     .chat-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: linear-gradient(135deg, #5a8dee, #7a5ff3);
       color: #fff;
       border-radius: 50px;
       padding: 14px 24px;
@@ -140,6 +140,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
       animation: pulse 3s infinite;
+      pointer-events: auto; /* make it clickable */
     }
 
     .chat-btn:hover {
@@ -169,39 +170,37 @@
     <a href="looker-dashboard.html" class="card">
       <div class="icon">📊</div>
       <h2>Looker Dashboards</h2>
-      <p>Access interactive dashboards and detailed analytics reports.</p>
+      <p>Interactive analytics and reporting tools to help you make data-driven decisions.</p>
     </a>
 
     <a href="google-form-dashboard.html" class="card">
       <div class="icon">📝</div>
       <h2>Google Forms</h2>
-      <p>Track form submissions and manage response data seamlessly.</p>
+      <p>Capture form responses and organise data effortlessly, powered by smart form technology.</p>
     </a>
 
     <a href="fms-dashboard.html" class="card">
       <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" style="width:40px;height:40px;"/>
       <h2>FMS Sheets</h2>
-      <p>Manage financial and operational data using integrated sheets.</p>
+      <p>Maintain and analyse operational & financial data using spreadsheets tied to dashboard insights.</p>
     </a>
 
     <a href="https://midemotwo.midap.in/creativent/fms_form.php?act=YTozOntzOjI6ImlkIjtpOjEyO3M6Mzoia2V5IjtzOjMyOiJmZTdiMDMwNzMwMGVjODU5Njg0MWM1MGYyOGUzM2E1NyI7czoxNDoiZW5fbGljZW5zZV9rZXkiO3M6MzI6IjUzYjQ5MjIzYTFiYjg0OTAzMjY3ZjNhMWM3YWY0NGMyIjt9" class="card">
       <div class="icon">🧷</div>
       <h2>Claim Form</h2>
-      <p>Submit and track claims quickly with a streamlined workflow.</p>
+      <p>Submit and track your claims through a streamlined and user-friendly interface.</p>
     </a>
 
   </div>
 
-  <!-- Robot + Speech Above Button -->
+  <!-- Robot + Speech -->
   <div class="chat-container">
     <div class="robot">🤖👇</div>
-    <div class="speech">I am there for you</div>
+    <div class="speech">I am here for you</div>
   </div>
 
-  <!-- Floating Button -->
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScKE0Flft9nirS6LljOvON5Bc60llCTgs607I0IvkxSvnswVw/viewform?usp=sharing&ouid=106541071227620913343" 
-     target="_blank" 
-     class="chat-btn">
+  <!-- Floating "I Need Form" Button -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScKE0Flft9nirS6LljOvON5Bc60llCTgs607I0IvkxSvnswVw/viewform?usp=sharing&ouid=106541071227620913343" target="_blank" class="chat-btn">
     💬 I Need Form
   </a>
 
