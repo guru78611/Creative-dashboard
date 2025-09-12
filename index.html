@@ -9,102 +9,110 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #1f4037, #99f2c8);
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      flex-direction: row;
-    }
-
-    .sidebar {
-      width: 280px;
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 40px 20px;
+      background: linear-gradient(135deg, #ffe259, #ffa751);
+      color: #333;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 30px;
-      align-items: flex-start;
-    }
-
-    .btn {
-      background-color: #ffffff;
-      color: #1f4037;
-      padding: 15px 20px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: transform 0.2s, background-color 0.3s;
-      text-decoration: none;
-      display: flex;
       align-items: center;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background-color: #e0e0e0;
-    }
-
-    .icon {
-      width: 24px;
-      height: 24px;
-    }
-
-    .main-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
     }
 
     h1 {
-      font-size: 2.8em;
-      text-shadow: 2px 2px 4px #000;
+      font-size: 3em;
+      margin: 40px 0 20px;
+      font-weight: 700;
+      color: #222;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      width: 85%;
+      max-width: 1100px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+    }
+
+    .card .icon {
+      font-size: 2em;
+      margin-bottom: 12px;
+    }
+
+    .card h2 {
+      font-size: 1.3em;
+      margin: 0 0 8px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      margin: 0;
+      color: #666;
+      line-height: 1.4;
     }
 
     footer {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
+      margin: 40px 0 20px;
       font-size: 0.9em;
-      opacity: 0.8;
+      color: rgba(0,0,0,0.6);
     }
   </style>
 </head>
 <body>
 
-  <div class="sidebar">
-  <a href="https://midemotwo.midap.in/creativent/login_form.php" class="btn">
-    🧷 MI DIGITAL AUTOPILOT
-  </a>
+  <h1>Creative NewTech Dashboard</h1>
 
-  <a href="looker-dashboard.html" class="btn">
-    📊 Looker Dashboards
-  </a>
+  <div class="dashboard">
 
-  <a href="google-form-dashboard.html" class="btn">
-    📝 Google Forms
-  </a>
+    <a href="https://midemotwo.midap.in/creativent/login_form.php" class="card">
+      <div class="icon">🧷</div>
+      <h2>MI DIGITAL AUTOPILOT</h2>
+      <p>Automate workflows and manage digital processes efficiently.</p>
+    </a>
 
-  <a href="fms-dashboard.html" class="btn">
-    <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" />
-    FMS Sheets
-  </a>
+    <a href="looker-dashboard.html" class="card">
+      <div class="icon">📊</div>
+      <h2>Looker Dashboards</h2>
+      <p>Access interactive dashboards and detailed analytics reports.</p>
+    </a>
 
-  <a href="https://midemotwo.midap.in/creativent/fms_form.php?act=YTozOntzOjI6ImlkIjtpOjEyO3M6Mzoia2V5IjtzOjMyOiJmZTdiMDMwNzMwMGVjODU5Njg0MWM1MGYyOGUzM2E1NyI7czoxNDoiZW5fbGljZW5zZV9rZXkiO3M6MzI6IjUzYjQ5MjIzYTFiYjg0OTAzMjY3ZjNhMWM3YWY0NGMyIjt9" class="btn">
-    🧷 CLAIM FORM
-  </a>
-</div>
+    <a href="google-form-dashboard.html" class="card">
+      <div class="icon">📝</div>
+      <h2>Google Forms</h2>
+      <p>Track form submissions and manage response data seamlessly.</p>
+    </a>
 
+    <a href="fms-dashboard.html" class="card">
+      <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" style="width:40px;height:40px;"/>
+      <h2>FMS Sheets</h2>
+      <p>Manage financial and operational data using integrated sheets.</p>
+    </a>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <h1>Creative NewTech Dashboard</h1>
+    <a href="https://midemotwo.midap.in/creativent/fms_form.php?act=YTozOntzOjI6ImlkIjtpOjEyO3M6Mzoia2V5IjtzOjMyOiJmZTdiMDMwNzMwMGVjODU5Njg0MWM1MGYyOGUzM2E1NyI7czoxNDoiZW5fbGljZW5zZV9rZXkiO3M6MzI6IjUzYjQ5MjIzYTFiYjg0OTAzMjY3ZjNhMWM3YWY0NGMyIjt9" class="card">
+      <div class="icon">🧷</div>
+      <h2>Claim Form</h2>
+      <p>Submit and track claims quickly with a streamlined workflow.</p>
+    </a>
+
   </div>
 
   <footer>
@@ -113,4 +121,3 @@
 
 </body>
 </html>
-
