@@ -9,97 +9,74 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ffe259, #ffa751);
-      background-size: 400% 400%;
-      animation: bgAnimation 15s ease infinite;
       color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
     }
 
-    /* Gradient Animation */
-    @keyframes bgAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Background Slideshow */
+    .slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
-    /* Floating abstract shapes like Canva */
-    .shape {
+    .slideshow img {
       position: absolute;
-      border-radius: 50%;
-      opacity: 0.4;
-      filter: blur(60px);
-      animation: float 12s infinite ease-in-out;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: slideShow 24s infinite;
     }
 
-    .shape1 {
-      width: 300px;
-      height: 300px;
-      background: #ff6a00;
-      top: -100px;
-      left: -100px;
-      animation-delay: 0s;
-    }
+    .slideshow img:nth-child(1) { animation-delay: 0s; }
+    .slideshow img:nth-child(2) { animation-delay: 6s; }
+    .slideshow img:nth-child(3) { animation-delay: 12s; }
+    .slideshow img:nth-child(4) { animation-delay: 18s; }
 
-    .shape2 {
-      width: 400px;
-      height: 400px;
-      background: #8e2de2;
-      bottom: -120px;
-      right: -120px;
-      animation-delay: 4s;
-    }
-
-    .shape3 {
-      width: 250px;
-      height: 250px;
-      background: #00c9ff;
-      top: 50%;
-      left: 20%;
-      animation-delay: 8s;
-    }
-
-    @keyframes float {
-      0%   { transform: translateY(0) translateX(0) scale(1); }
-      50%  { transform: translateY(-40px) translateX(30px) scale(1.1); }
-      100% { transform: translateY(0) translateX(0) scale(1); }
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      25% { opacity: 1; }
+      35% { opacity: 0; }
+      100% { opacity: 0; }
     }
 
     h1 {
       font-size: 3em;
-      margin: 100px 0 30px;
+      margin: 60px 0 20px;
       font-weight: 700;
-      color: #222;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-      z-index: 1;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
     }
 
     .dashboard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      gap: 20px;
       width: 85%;
       max-width: 1100px;
-      margin-top: 30px;
-      z-index: 1;
+      margin-top: 10px;
     }
 
     .card {
-      background: #fff;
+      background: rgba(255,255,255,0.9);
       border-radius: 16px;
-      padding: 25px 20px;
+      padding: 20px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       text-decoration: none;
       color: #333;
       display: flex;
       flex-direction: column;
       transition: transform 0.25s, box-shadow 0.25s;
-      z-index: 1;
     }
 
     .card:hover {
@@ -107,18 +84,26 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.25);
     }
 
-    .card .icon { font-size: 2em; margin-bottom: 12px; }
-    .card h2 { font-size: 1.3em; margin: 0 0 8px; font-weight: 600; color: #222; }
-    .card p { font-size: 0.95em; margin: 0; color: #666; line-height: 1.4; }
-
-    footer {
-      margin: 40px 0 20px;
-      font-size: 0.9em;
-      color: rgba(0,0,0,0.6);
-      z-index: 1;
+    .card .icon {
+      font-size: 2em;
+      margin-bottom: 12px;
     }
 
-    /* Floating "I Need Form" Button */
+    .card h2 {
+      font-size: 1.2em;
+      margin: 0 0 8px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 0.9em;
+      margin: 0;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Floating Chat Button */
     .chat-btn {
       position: fixed;
       bottom: 20px;
@@ -146,19 +131,27 @@
       50% { transform: scale(1.07); }
       100% { transform: scale(1); }
     }
+
+    footer {
+      margin: 40px 0 20px;
+      font-size: 0.9em;
+      color: rgba(255,255,255,0.8);
+    }
   </style>
 </head>
 <body>
 
-  <!-- Background Animated Shapes -->
-  <div class="shape shape1"></div>
-  <div class="shape shape2"></div>
-  <div class="shape shape3"></div>
+  <!-- Background Slideshow -->
+  <div class="slideshow">
+    <img src="https://source.unsplash.com/1600x900/?technology" alt="">
+    <img src="https://source.unsplash.com/1600x900/?innovation" alt="">
+    <img src="https://source.unsplash.com/1600x900/?business" alt="">
+    <img src="https://source.unsplash.com/1600x900/?future" alt="">
+  </div>
 
   <h1>Creative NewTech Dashboard</h1>
 
   <div class="dashboard">
-
     <a href="https://midemotwo.midap.in/creativent/login_form.php" class="card">
       <div class="icon">🧷</div>
       <h2>MI DIGITAL AUTOPILOT</h2>
@@ -188,7 +181,6 @@
       <h2>Claim Form</h2>
       <p>Submit and track claims quickly with a streamlined workflow.</p>
     </a>
-
   </div>
 
   <!-- Floating Chat Button -->
@@ -201,6 +193,5 @@
   <footer>
     © 2025 Creative NewTech
   </footer>
-
 </body>
 </html>
