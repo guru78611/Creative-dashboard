@@ -155,12 +155,12 @@
             const expectedPassword = dashboardPasswords[dashboard.name];
             const userInput = prompt("Enter password to access this dashboard:");
             if (userInput === expectedPassword) {
-              window.open(dashboard.url, "_blank");
+              window.open(dashboard.url, "_self"); // same tab
             } else if (userInput !== null) {
               alert("Incorrect password. Access denied.");
             }
           } else {
-            window.open(dashboard.url, "_blank");
+            window.open(dashboard.url, "_self"); // same tab
           }
         };
 
@@ -189,11 +189,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
