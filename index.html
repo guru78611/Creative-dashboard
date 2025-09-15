@@ -3,74 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Creative Dashboard</title>
+  <title>Creative NewTech Dashboard</title>
   <style>
-    /* Reset */
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow: hidden;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      color: #fff;
+      position: relative;
     }
 
     /* Background Video */
     #bg-video {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: -1;
     }
 
-    /* Dashboard Overlay */
-    .dashboard {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
+    .dashboard-container {
+      flex: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      background: rgba(0,0,0,0.55); /* transparent dark overlay */
-      padding: 20px;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-size: 2.6em;
+      margin: 30px 0 15px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      text-align: left;
+      width: 90%;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 90%;
+      max-width: 1000px;
+      margin-top: 15px;
     }
 
     .card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 40px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      max-width: 600px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 14px;
+      padding: 20px 18px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    .card h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+    }
+
+    .card .icon {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 1.2em;
+      margin: 0 0 6px;
+      font-weight: 600;
+      color: #fff;
     }
 
     .card p {
-      font-size: 1.1rem;
-      line-height: 1.5;
+      font-size: 0.9em;
+      margin: 0;
+      color: #ddd;
+      line-height: 1.4;
+    }
+
+    footer {
+      margin: 30px 0 15px;
+      font-size: 0.85em;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      border-radius: 50px;
+      padding: 12px 22px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      animation: pulse 3s infinite;
+      z-index: 1000;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
     }
 
     @media (max-width: 768px) {
-      .card {
-        padding: 20px;
+      .dashboard-container {
+        padding: 20px 10px;
       }
-      .card h1 {
-        font-size: 1.8rem;
+      .dashboard {
+        grid-template-columns: 1fr;
       }
-      .card p {
-        font-size: 1rem;
+      h1 {
+        font-size: 2em;
+        width: 100%;
       }
     }
   </style>
@@ -80,17 +147,43 @@
   <!-- Background Video -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="https://github.com/guru78611/Background-video/raw/main/Black%20Slate%20Grey%20Gradient%20Color%20and%20Style%20Video%20Background%20(1).mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 
-  <!-- Dashboard Content -->
-  <div class="dashboard">
-    <div class="card">
-      <h1>Creative Dashboard</h1>
-      <p>Welcome to your modern dashboard.  
-      The video background is powered directly from GitHub 🎥✨</p>
+  <div class="dashboard-container">
+    <h1>Creative NewTech Dashboard</h1>
+    <div class="dashboard">
+      <a href="https://midemotwo.midap.in/creativent/login_form.php" class="card">
+        <div class="icon">🧷</div>
+        <h2>MI DIGITAL AUTOPILOT</h2>
+        <p>Automate workflows and manage digital processes efficiently.</p>
+      </a>
+      <a href="looker-dashboard.html" class="card">
+        <div class="icon">📊</div>
+        <h2>LOOKER DASHBOARDS</h2>
+        <p>Access interactive dashboards and detailed analytics reports.</p>
+      </a>
+      <a href="google-form-dashboard.html" class="card">
+        <div class="icon">📝</div>
+        <h2>MIDAP FORMS</h2>
+        <p>Track form submissions and manage response data seamlessly.</p>
+      </a>
+      <a href="fms-dashboard.html" class="card">
+        <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" style="width:35px;height:35px;"/>
+        <h2>FMS SHEETS</h2>
+        <p>Manage financial and operational data using integrated sheets.</p>
+      </a>
+      <a href="https://midemotwo.midap.in/creativent/fms_form.php?act=YTozOntzOjI6ImlkIjtpOjEyO3M6Mzoia2V5IjtzOjMyOiJmZTdiMDMwNzMwMGVjODU5Njg0MWM1MGYyOGUzM2E1NyI7czoxNDoiZW5fbGljZW5zZV9rZXkiO3M6MzI6IjUzYjQ5MjIzYTFiYjg0OTAzMjY3ZjNhMWM3YWY0NGMyIjt9" class="card">
+        <div class="icon">🧷</div>
+        <h2>Claim Form</h2>
+        <p>Submit and track claims quickly with a streamlined workflow.</p>
+      </a>
     </div>
+    <footer>© 2025 Creative NewTech Limited</footer>
   </div>
+
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScKE0Flft9nirS6LljOvON5Bc60llCTgs607I0IvkxSvnswVw/viewform?usp=sharing&ouid=106541071227620913343" target="_blank" class="chat-btn">
+    💬 I Need Form
+  </a>
 
 </body>
 </html>
