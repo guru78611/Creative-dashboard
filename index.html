@@ -13,20 +13,30 @@
       min-height: 100vh;
       flex-direction: column;
       background: #f5f7fa;
+      overflow: hidden;
+    }
+
+    /* Video background */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
 
     .dashboard-container {
       flex: 1;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: background-image 1s ease-in-out;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
       overflow-y: auto;
       color: #333;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -137,7 +147,13 @@
 </head>
 <body>
 
-  <div class="dashboard-container" id="slideshow">
+  <!-- Video Background -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <!-- 👇 yaha apna Canva se download kiya MP4 file ka link daalo -->
+    <source src="https://www.canva.com/design/DAGzCBsOlzA/BU_8Zy13gYv-gmOF71q1jA/watch?utm_content=DAGzCBsOlzA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0eb6177cca" type="video/mp4">
+  </video>
+
+  <div class="dashboard-container">
     <h1>Creative NewTech Dashboard</h1>
 
     <div class="dashboard">
@@ -160,7 +176,8 @@
       </a>
 
       <a href="fms-dashboard.html" class="card">
-        <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" alt="Google Sheets" class="icon" style="width:35px;height:35px;"/>
+        <img src="https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png" 
+             alt="Google Sheets" class="icon" style="width:35px;height:35px;"/>
         <h2>FMS SHEETS</h2>
         <p>Manage financial and operational data using integrated sheets.</p>
       </a>
@@ -183,24 +200,5 @@
     💬 I Need Form
   </a>
 
-  <script>
-    const images = [  
-      "https://www.canva.com/design/DAGzCBsOlzA/BU_8Zy13gYv-gmOF71q1jA/watch?utm_content=DAGzCBsOlzA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0eb6177cca"
-    ];
-
-    let index = 0;
-    const slideshow = document.getElementById("slideshow");
-
-    function changeBackground() {
-      slideshow.style.backgroundImage = `url('${images[index]}')`;
-      index = (index + 1) % images.length;
-    }
-
-    changeBackground(); // init
-    setInterval(changeBackground, 9000);
-  </script>
-
 </body>
 </html>
-
-
