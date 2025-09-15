@@ -16,8 +16,19 @@
 
     h1 {
       font-size: 2.5em;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-shadow: 2px 2px 4px #000;
+    }
+
+    /* Search Box */
+    #searchBox {
+      padding: 10px 15px;
+      width: 300px;
+      max-width: 90%;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      margin-bottom: 30px;
     }
 
     .form-list {
@@ -73,7 +84,6 @@
   </style>
 
   <script>
-    // Replace with your actual Google Form URLs
     const googleForms = [
       { name: "AMAZON ONLINE RETURN", url: "https://docs.google.com/forms/d/e/1FAIpQLSdGHqBGISRR4sTRhylpwBCcFa6QCe_bQSY4zh5Xhcei6w7Bwg/viewform?usp=sharing" },
       { name: "CLICK ONLINE RETURN", url: "https://docs.google.com/forms/d/e/1FAIpQLScKvHwcKhU6NJ5BOXKhZJk-oXfp2eyEUKxflH_jqHCccHT36A/viewform?usp=sharing" },
@@ -90,15 +100,40 @@
       { name: "NEFT/RTGS - Form Link", url: "https://midemotwo.midap.in/creativent/shorturl.php?url=13c3f8f1451d801505d2f5b69444c556" },
       { name: "MY REQUEST - Form Link", url: "https://forms.gle/PuXPwZaQtbiPJCCJ9" },
       { name: "CHEQUE PAYMENT - Form Link", url: "https://midemotwo.midap.in/creativent/shorturl.php?url=ae2d93d7ff047a0233421ada7427e984" },
-       { name: "EXPORT SALE INVOICE BOOKING FMS - Form Link", url: "https://midemotwo.midap.in/creativent/shorturl.php?url=062548d6fcffe4c271cd2f42296a8357" },
+      { name: "EXPORT SALE INVOICE BOOKING FMS - Form Link", url: "https://midemotwo.midap.in/creativent/shorturl.php?url=062548d6fcffe4c271cd2f42296a8357" },
     ];
 
     function loadForms() {
       const container = document.getElementById("formContainer");
+      container.innerHTML = "";
       googleForms.forEach(form => {
         const card = document.createElement("div");
         card.className = "form-card";
-        card.onclick = () => window.open(form.url, "_self"); // ✅ same tab
+        card.onclick = () => window.open(form.url, "_self");
+
+        const icon = document.createElement("img");
+        icon.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRpUFJLvWoweterzOhfWgZhCDjrAVpfBvhg&s";
+        icon.alt = "Google Form Icon";
+
+        const title = document.createElement("div");
+        title.className = "form-title";
+        title.innerText = form.name;
+
+        card.appendChild(icon);
+        card.appendChild(title);
+        container.appendChild(card);
+      });
+    }
+
+    function filterForms() {
+      const query = document.getElementById("searchBox").value.toLowerCase();
+      const filteredForms = googleForms.filter(form => form.name.toLowerCase().includes(query));
+      const container = document.getElementById("formContainer");
+      container.innerHTML = "";
+      filteredForms.forEach(form => {
+        const card = document.createElement("div");
+        card.className = "form-card";
+        card.onclick = () => window.open(form.url, "_self");
 
         const icon = document.createElement("img");
         icon.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRpUFJLvWoweterzOhfWgZhCDjrAVpfBvhg&s";
@@ -121,11 +156,12 @@
 
   <h1>Google Forms Dashboard</h1>
 
+  <!-- Search Box -->
+  <input type="text" id="searchBox" placeholder="Search forms..." onkeyup="filterForms()">
+
   <div class="form-list" id="formContainer">
     <!-- Form cards will be inserted here -->
   </div>
 
 </body>
 </html>
-
-
