@@ -11,19 +11,21 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       min-height: 100vh;
-      flex-direction: column; /* make vertical layout by default */
-      background: #f5f7fa; /* fallback background */
+      flex-direction: column;
+      background: #f5f7fa;
     }
 
     .dashboard-container {
       flex: 1;
-      /* Use a background image for the dashboard */
-      background: url('https://pngtree.com/freebackground/technology-round-dashboard_1598385.html') center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
-      overflow-y: auto; /* scroll if needed */
+      overflow-y: auto;
       color: #333;
     }
 
@@ -32,10 +34,10 @@
       margin: 30px 0 15px;
       font-weight: 700;
       color: #222;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
       text-align: left;
       width: 90%;
-      background-color: rgba(255, 255, 255, 0.8); /* slight white overlay so text is readable */
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 10px;
       border-radius: 8px;
     }
@@ -124,7 +126,7 @@
         padding: 20px 10px;
       }
       .dashboard {
-        grid-template-columns: 1fr; /* single column cards on mobile */
+        grid-template-columns: 1fr;
       }
       h1 {
         font-size: 2em;
@@ -135,7 +137,7 @@
 </head>
 <body>
 
-  <div class="dashboard-container">
+  <div class="dashboard-container" id="slideshow">
     <h1>Creative NewTech Dashboard</h1>
 
     <div class="dashboard">
@@ -180,6 +182,24 @@
      class="chat-btn">
     💬 I Need Form
   </a>
+
+  <script>
+    const images = [ 
+      "https://picsum.photos/id/1003/1600/900", 
+      "https://picsum.photos/id/1011/1600/900"
+    ];
+
+    let index = 0;
+    const slideshow = document.getElementById("slideshow");
+
+    function changeBackground() {
+      slideshow.style.backgroundImage = `url('${images[index]}')`;
+      index = (index + 1) % images.length;
+    }
+
+    changeBackground(); // init
+    setInterval(changeBackground, 9000);
+  </script>
 
 </body>
 </html>
