@@ -16,8 +16,20 @@
 
     h1 {
       font-size: 2.5em;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-shadow: 2px 2px 4px #000;
+    }
+
+    /* 🔎 Search box style */
+    #searchBox {
+      width: 60%;
+      max-width: 400px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 30px;
+      font-size: 1em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     .sheet-list {
@@ -74,7 +86,6 @@
 
   <script>
     const fmsSheets = [
-     
       { name: "GSTR FMS", url: "https://docs.google.com/spreadsheets/d/103NzafiS3XUCr54XtVtr31CQeOkPANqHDW6xp0vLTvg/edit#gid=663292535" },
       { name: "CLICK ONLINE RETURN", url: "https://docs.google.com/spreadsheets/d/1OC0DIC9Yr1imuev-ogR0UofhW1uj7xAs2obYTj5XLnk/edit?resourcekey=&gid=1331081312#gid=1331081312" },
       { name: "AMAZON ONLINE RETURN", url: "https://docs.google.com/spreadsheets/d/1O6qTBI76He7O9V7wCWfv1CWvdMenPrOIYLa1s81TqPc/edit?usp=sharing" },
@@ -82,14 +93,23 @@
       { name: "BANK RECO", url: "https://docs.google.com/spreadsheets/d/1chzVg3Y6pjm1UB-j9URfI8W8A2-EgvlIgalgJAVGPKc/edit?gid=986367637#gid=986367637" },
       { name: "MY REQUEST FMS ", url: "https://docs.google.com/spreadsheets/d/1ogynkwTzAa4E0GsEkUOB-W2rF87SysHf976NQHx97Zs/edit?usp=sharing" },
       { name: "CURRIOR OUTWARD HO", url: "https://docs.google.com/spreadsheets/d/1du5Mg_joYTd7tsAtvhcUoXtxRBMCKGao0hMSvEY9hB4/edit#gid=663292535" },
+      { name: "SCPL PO FROM CUSTOMER", url: "https://docs.google.com/spreadsheets/d/1rN2QeXXVSpDtXnBIdYwFnlAVl7Y2wa_ZDHNWwG6FAjY/edit?resourcekey#gid=663292535" },
+      { name: "COURIER OUTWARD SERVICE", url: "https://docs.google.com/spreadsheets/d/1rXLpa5qxuwzGnKHSzFmFG7Ormcpbau21sdaOALqM37c/edit#gid=91969311" },
+      { name: "RENT FMS", url: "https://docs.google.com/spreadsheets/d/1vde0qQPbd4OncdnjdBPdS4cijQV4qiLNt3xad7td6I0/edit#gid=663292535" },
+      { name: "SCS PO TO DISPATCH", url: "https://docs.google.com/spreadsheets/d/1L8ehWYCIXZ5Cn5mQhsd3H8mdPBfhuM9FN8HG7q2ay5g/edit#gid=663292535" },
+      { name: "RMA Service FMS", url: "https://docs.google.com/spreadsheets/d/1IOTWIyoxI7GUqWZny4Sfn30BQw6XEIX4Bz8ANjTZbN8/edit?gid=663292535#gid=663292535" },
+      { name: "CRM CALLING SHEET", url: "https://docs.google.com/spreadsheets/d/1dg0WIDnEYW3uhG8OA3_ZKgwJkBpPGM6z_DYEL4ShP4U/edit?gid=55131190#gid=55131190" },
+      { name: "BDA CALLING DATA", url: "https://docs.google.com/spreadsheets/d/1mV-_T-3seJl0Ule11Wu-2jl_N-7-ezGREENFzXhI3Vs/edit?usp=sharing" },
+      { name: "TARGET VS ACHIEMENT ", url: "https://docs.google.com/spreadsheets/d/1oA42YjWRDcGVpMdVvnSFMSpXxdJIGinoEl6qxxIufQQ/edit?usp=sharing" },
     ];
 
     function loadSheets() {
       const container = document.getElementById("sheetContainer");
+      container.innerHTML = ""; // clear before reload
       fmsSheets.forEach(sheet => {
         const card = document.createElement("div");
         card.className = "sheet-card";
-        card.onclick = () => window.location.href = sheet.url; // ✅ Same tab
+        card.onclick = () => window.location.href = sheet.url;
 
         const icon = document.createElement("img");
         icon.src = "https://www.gstatic.com/images/branding/product/1x/sheets_2020q4_48dp.png";
@@ -105,6 +125,15 @@
       });
     }
 
+    function searchSheets() {
+      const query = document.getElementById("searchBox").value.toLowerCase();
+      const cards = document.querySelectorAll(".sheet-card");
+      cards.forEach(card => {
+        const title = card.querySelector(".sheet-title").innerText.toLowerCase();
+        card.style.display = title.includes(query) ? "block" : "none";
+      });
+    }
+
     window.onload = loadSheets;
   </script>
 </head>
@@ -112,10 +141,12 @@
 
   <h1>FMS Sheets Dashboard</h1>
 
+  <!-- 🔎 Search box -->
+  <input type="text" id="searchBox" placeholder="Search FMS Sheet..." onkeyup="searchSheets()"/>
+
   <div class="sheet-list" id="sheetContainer">
     <!-- Sheet cards will be inserted here -->
   </div>
 
 </body>
 </html>
-
