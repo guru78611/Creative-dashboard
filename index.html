@@ -156,7 +156,8 @@
         <h2>MI DIGITAL AUTOPILOT</h2>
         <p>Automate workflows and manage digital processes efficiently.</p>
       </a>
-      <a href="looker-dashboard.html" class="card">
+      <!-- Added id to this link only so we can attach a password prompt (no other changes) -->
+      <a href="looker-dashboard.html" id="looker-link" class="card">
         <div class="icon">📊</div>
         <h2>LOOKER DASHBOARDS</h2>
         <p>Access interactive dashboards and detailed analytics reports.</p>
@@ -184,7 +185,25 @@
     💬 I Need Form
   </a>
 
+  <script>
+    // Password protection for the Looker Dashboard link only
+    (function() {
+      var lookerLink = document.getElementById('looker-link');
+      if (!lookerLink) return;
+      lookerLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        var pwd = prompt('Enter password to access Looker Dashboards:');
+        // Password required by user: "5"
+        if (pwd === null) return; // user cancelled
+        if (pwd === '5') {
+          // correct, proceed
+          window.location.href = lookerLink.getAttribute('href');
+        } else {
+          alert('Incorrect password. Access denied.');
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
-
-
